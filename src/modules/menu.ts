@@ -174,18 +174,83 @@ function createMenu() {
     "btnDrink",
     `<i class="fa-solid fa-sort-down"></i>`
   );
+  const wrapDrink = createTag(choice, "div", null, "drinksList", null);
+  wrapDrink.classList.add("hidden");
+  wrapDrink.classList.remove("drinksList");
+
+  for (let i = 0; i < drinks.length; i++) {
+    let item: Drink = drinks[i] as Drink;
+    item.renderDrink(wrapDrink);
+  }
+
   // button Drink
   btnDrink.addEventListener("click", () => {
-    if (wrapSalad.classList.contains("hidden")) {
-      wrapSalad.classList.add("ingredientsDrink");
-      wrapSalad.classList.remove("hidden");
+    if (wrapDrink.classList.contains("hidden")) {
+      wrapDrink.classList.add("drinksList");
+      wrapDrink.classList.remove("hidden");
     } else {
-      wrapSalad.classList.add("hidden");
-      wrapSalad.classList.remove("ingredientsDrink");
+      wrapDrink.classList.add("hidden");
+      wrapDrink.classList.remove("drinksList");
     }
   });
-
+  wrapDrink.addEventListener("click", (e) => {
+    // todo rework
+    let currentTarget = e.target as HTMLButtonElement;
+    if (currentTarget!.matches(".addBeer05")) {
+      cart.addToCart(drinks[0] as Drink);
+    }
+    if (currentTarget!.matches(".removeBeer05")) {
+      cart.removeFromCart(drinks[0] as Drink);
+    }
+    if (currentTarget!.matches(".addBeer033")) {
+      cart.addToCart(drinks[1] as Drink);
+    }
+    if (currentTarget!.matches(".removeBeer033")) {
+      cart.removeFromCart(drinks[1] as Drink);
+    }
+    if (currentTarget!.matches(".addCocaCola05")) {
+      cart.addToCart(drinks[2] as Drink);
+    }
+    if (currentTarget!.matches(".removeCocaCola05")) {
+      cart.removeFromCart(drinks[2] as Drink);
+    }
+    if (currentTarget!.matches(".addCocaCola033")) {
+      cart.addToCart(drinks[3] as Drink);
+    }
+    if (currentTarget!.matches(".removeCocaCola033")) {
+      cart.removeFromCart(drinks[3] as Drink);
+    }
+    if (currentTarget!.matches(".addSprite05")) {
+      cart.addToCart(drinks[4] as Drink);
+    }
+    if (currentTarget!.matches(".removeSprite05")) {
+      cart.removeFromCart(drinks[4] as Drink);
+    }
+    if (currentTarget!.matches(".addSprite033")) {
+      cart.addToCart(drinks[5] as Drink);
+    }
+    if (currentTarget!.matches(".removeSprite033")) {
+      cart.removeFromCart(drinks[5] as Drink);
+    }
+    if (currentTarget!.matches(".addAppleJuice05")) {
+      cart.addToCart(drinks[6] as Drink);
+    }
+    if (currentTarget!.matches(".removeAppleJuice05")) {
+      cart.removeFromCart(drinks[6] as Drink);
+    }
+    if (currentTarget!.matches(".addAppleJuice033")) {
+      cart.addToCart(drinks[7] as Drink);
+    }
+    if (currentTarget!.matches(".removeAppleJuice033")) {
+      cart.removeFromCart(drinks[7] as Drink);
+    }
+    if (currentTarget!.matches(".addMineralWater05")) {
+      cart.addToCart(drinks[8] as Drink);
+    }
+    if (currentTarget!.matches(".removeMineralWater05")) {
+      cart.removeFromCart(drinks[8] as Drink);
+    }
+  });
   // todo addCart and Warning to the right spaces
 }
-
 export { createMenu };

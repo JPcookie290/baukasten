@@ -91,3 +91,15 @@
 .btnSalad:hover {
   color: rgb(255, 255, 255);
 }
+//todo change to grid
+.drinkDisplay {
+  display: flex;
+  justify-content: center;
+  p {
+    margin: 1em;
+  }
+  button {
+    margin: 1em;
+    height: fit-content;
+  }
+}

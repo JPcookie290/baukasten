@@ -26,14 +26,48 @@ class Drink {
     return this.price;
   }
 
-  createDrink() {}
-  renderDrink() {}
-  ageWarning() {
-    if (this.underage === false) {
-      console.log("Must be over 18 to order");
-    }
+  getType() {
+    return this.type;
   }
-  // Buttons
+  getCheckString() {
+    return `${this.getType().replace(/ /g, "")}${this.size
+      .toString()
+      .replace(".", "")}`;
+  }
+  renderDrink(parent: HTMLElement) {
+    const drink = createTag(parent, "div", null, "drinkDisplay", null);
+    createTag(drink, "p", null, null, `${this.getType()}, ${this.size}l`);
+    createTag(
+      drink,
+      "p",
+      null,
+      null,
+      `${this.getPrice().toLocaleString("de-DE", {
+        style: "currency",
+        currency: "EUR",
+      })}`
+    );
+    const buttons = createTag(drink, "div", null, "drinkDisplay", null);
+    createTag(
+      buttons,
+      "button",
+      null,
+      `add${this.getCheckString()}`,
+      `<i class="fa-solid fa-plus">`
+    );
+    createTag(
+      buttons,
+      "button",
+      null,
+      `remove${this.getCheckString()}`,
+      `<i class="fa-solid fa-minus">`
+    );
+  }
+  // todo for later use
+  // ageWarning() {
+  //   if (this.underage === false) {
+  //     console.log("Must be over 18 to order");
+  //   }
 }
 
 export { Drink };
